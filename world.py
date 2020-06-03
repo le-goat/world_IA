@@ -26,7 +26,10 @@ class Agent:
             if outcome == self.anticipated_outcome and self.Valeur_hedoniste_anticipee_pour_action_0 >= self.Valeur_hedoniste_anticipee_pour_action_1:
                 self.new_action = self._action
             if self.ennui >= 3 or self.Valeur_hedoniste_anticipee_pour_action_0 <= self.Valeur_hedoniste_anticipee_pour_action_1:
-                self.new_action = Environment2.outcome(self, self._action)
+                if self._action == 0:
+                    self.new_action = 1
+                else:
+                    self.new_action = 0
 
         else:
             self.anticipation_1 = outcome
@@ -34,7 +37,10 @@ class Agent:
             if outcome == self.anticipated_outcome and self.Valeur_hedoniste_anticipee_pour_action_1 >= self.Valeur_hedoniste_anticipee_pour_action_0:
                 self.new_action = self._action
             if self.ennui >= 3 or self.Valeur_hedoniste_anticipee_pour_action_1 <= self.Valeur_hedoniste_anticipee_pour_action_0:
-                self.new_action = Environment2.outcome(self, self._action)
+                if self._action == 0:
+                    self.new_action = 1
+                else:
+                    self.new_action = 0
 
         if self._action == self.new_action:
             self.ennui = self.ennui + 1
